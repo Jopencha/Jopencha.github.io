@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>opencv环境搭建 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Qt配置opencv+opencv_contrib①环境概述：Qt5.12.2 + python3.7.1_32 + cmake3.18.5_x64②源文件：1.github下载opencv + opencv_contrib[此文用的3.4.14版本]2.opencv官网下载opencv  注：opencv和opencv_contrib用同一版本，git clone默认是master。git br">
+<meta property="og:type" content="article">
+<meta property="og:title" content="opencv环境搭建">
+<meta property="og:url" content="http://example.com/2022/08/29/opencv%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Qt配置opencv+opencv_contrib①环境概述：Qt5.12.2 + python3.7.1_32 + cmake3.18.5_x64②源文件：1.github下载opencv + opencv_contrib[此文用的3.4.14版本]2.opencv官网下载opencv  注：opencv和opencv_contrib用同一版本，git clone默认是master。git br">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/f6b4eb67f05f4e31917f2fab463f2623.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fd4f8a4ec9584fb2aace9ca85de46faf.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/186adab2cf724a0e9ce04f3b5393d3e4.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/dcbf0da8e10f4bdfa8b823e67c8dbff2.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/642b4a10b49649ceadbf8a6e3fb10549.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/3813778b5c6b4127bc1d60c5697cfb7f.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a568dc8614aa47b0ad6fc461cfaf9b7d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2c097519bc694d46ae1c01f7115f447b.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/6a4c6501fc17494eb9c63ed654743652.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/d891ff1f5eb14d8bba0dbe94e8b1a551.png">
+<meta property="article:published_time" content="2022-08-29T10:49:09.000Z">
+<meta property="article:modified_time" content="2022-08-29T10:51:05.267Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="opencv">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/f6b4eb67f05f4e31917f2fab463f2623.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-opencv环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/29/opencv%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2022-08-29T10:49:09.000Z" itemprop="datePublished">2022-08-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      opencv环境搭建
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Qt配置opencv-opencv-contrib"><a href="#Qt配置opencv-opencv-contrib" class="headerlink" title="Qt配置opencv+opencv_contrib"></a>Qt配置opencv+opencv_contrib</h1><p>①环境概述：<br><a target="_blank" rel="noopener" href="https://download.qt.io/archive/qt/">Qt</a>5.12.2 + <a target="_blank" rel="noopener" href="https://www.python.org/downloads/">python</a>3.7.1_32 + <a target="_blank" rel="noopener" href="https://cmake.org/files/">cmake</a>3.18.5_x64<br>②源文件：<br>1.github下载<br><a target="_blank" rel="noopener" href="https://github.com/opencv/opencv">opencv</a> + <a target="_blank" rel="noopener" href="https://github.com/opencv/opencv_contrib">opencv_contrib</a><br>[此文用的3.4.14版本]<br>2.opencv官网下载<br><a target="_blank" rel="noopener" href="https://opencv.org/releases/">opencv</a></p>
+<blockquote>
+<p>注：opencv和opencv_contrib用同一版本，git clone默认是master。<br>git branch -a:<br><img src="https://img-blog.csdnimg.cn/f6b4eb67f05f4e31917f2fab463f2623.png" alt="git branch -a"><br>git checkout x.x.x:<br><img src="https://img-blog.csdnimg.cn/fd4f8a4ec9584fb2aace9ca85de46faf.png" alt="git checkout x.x.x"></p>
+</blockquote>
+<h4 id="1、Qt"><a href="#1、Qt" class="headerlink" title="1、Qt"></a>1、Qt</h4><blockquote>
+<p> 注：安装选择mingw编译器，有32位和64位，最好两个都选。另外tools也要勾选mingw，将安装的tools添加到系统path，后面编译安装需要。</p>
+</blockquote>
+<h4 id="2、python"><a href="#2、python" class="headerlink" title="2、python"></a>2、python</h4><blockquote>
+<p> 注：用32位编译器则装32位python，64位对应，附加安装建议全部勾上（非科学上网的话，可能较慢）。</p>
+</blockquote>
+<h4 id="3、cmake编译opencv-opencv-contrib"><a href="#3、cmake编译opencv-opencv-contrib" class="headerlink" title="3、cmake编译opencv+opencv contrib"></a>3、cmake编译opencv+opencv contrib</h4><p>① cmake<br><img src="https://img-blog.csdnimg.cn/186adab2cf724a0e9ce04f3b5393d3e4.png" alt="cmake"></p>
+<blockquote>
+<p>第一栏：选择opencv源目录<br>第二栏：新建文件夹路径（放编译后的库）</p>
+</blockquote>
+<p>②第一次configure<br><img src="https://img-blog.csdnimg.cn/dcbf0da8e10f4bdfa8b823e67c8dbff2.png" alt="configure"><br>configure done后，配置条目</p>
+<p><code>[查找这几项，打√勾选，打×取消]</code><br>WITH_OPENGL √<br>WITH_QT √<br>OPENCV_ENABLE_NOFREE √<br>BUILD_opencv_world ×<br>ENABLE_PRECOMPILED_HEADERS ×<br>OPENCV_GENERATE_SETUPVARS ×<br><code>[添加opencv_contrib模块]</code><br>查找OPENCV_EXTRA_MODULES_PATH项<br>设置为opencv_contrib的modules路径<br><img src="https://img-blog.csdnimg.cn/642b4a10b49649ceadbf8a6e3fb10549.png" alt="modules"><br> <code>[新增条目，Add Entry]</code><br>&#x3D;&#x3D;[QT_DIR]为Qt安装根目录&#x3D;&#x3D;<br>1.Qt5_DIR<br>[QT_DIR]&#x2F;5.12.2&#x2F;mingw73_32&#x2F;lib&#x2F;cmake&#x2F;Qt5<br>2.Qt5Concurrent_DIR<br>[QT_DIR]&#x2F;5.12.2&#x2F;mingw73_32&#x2F;lib&#x2F;cmake&#x2F;Qt5Concurrent<br>3.Qt5Core_DIR<br>[QT_DIR]&#x2F;5.12.2&#x2F;mingw73_32&#x2F;lib&#x2F;cmake&#x2F;Qt5Core<br>4. Qt5Gui_DIR<br>[QT_DIR]&#x2F;5.12.2&#x2F;mingw73_32&#x2F;lib&#x2F;cmake&#x2F;Qt5Gui<br>5.Qt5OpenGL_DIR<br>[QT_DIR]&#x2F;5.12.2&#x2F;mingw73_32&#x2F;lib&#x2F;cmake&#x2F;Qt5OpenGL<br>6.Qt5Test_DIR<br>[QT_DIR]&#x2F;5.12.2&#x2F;mingw73_32&#x2F;lib&#x2F;cmake&#x2F;Qt5Test<br>7.Qt5Widgets_DIR<br>[QT_DIR]&#x2F;5.12.2&#x2F;mingw73_32&#x2F;lib&#x2F;cmake&#x2F;Qt5Widgets</p>
+<p>③第二次configure<br><img src="https://img-blog.csdnimg.cn/3813778b5c6b4127bc1d60c5697cfb7f.png" alt="configure done"><br>无报错configure done后，点击generate生成配置后的源。<br>④mingw32-make编译安装<br>&#x3D;&#x3D;-j 后接的参数指线程数，小于等于自己电脑核的数量。&#x3D;&#x3D;<br>编译：<code>mingw32-make -j 16</code><br><img src="https://img-blog.csdnimg.cn/a568dc8614aa47b0ad6fc461cfaf9b7d.png" alt="make"><br>安装：<code>mingw32-make install -j 16</code><br><img src="https://img-blog.csdnimg.cn/2c097519bc694d46ae1c01f7115f447b.png" alt="make install"></p>
+<h4 id="4、测试"><a href="#4、测试" class="headerlink" title="4、测试"></a>4、测试</h4><p>SURF算法（opencv_contrib） + imread&#x2F;imshow(opencv)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;core/core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;imgproc.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;highgui/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;opencv2/opencv.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;opencv2/xfeatures2d.hpp&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv::xfeatures2d;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>** argv)</span> </span>&#123;</span><br><span class="line">    Mat src1 = <span class="built_in">imread</span>(<span class="string">&quot;C:\\Users\\Administrator\\Desktop\\QT_project\\cv_proj\\1.jpg&quot;</span>);</span><br><span class="line">    Mat src2 = <span class="built_in">imread</span>(<span class="string">&quot;C:\\Users\\Administrator\\Desktop\\QT_project\\cv_proj\\1_1.jpg&quot;</span>);</span><br><span class="line">    Mat MatchesImage;</span><br><span class="line">    Mat src1_vector, src2_vector;<span class="comment">//用来存放特征点的描述向量</span></span><br><span class="line">    <span class="function">BFMatcher <span class="title">matcher</span><span class="params">(NORM_L2)</span></span>;</span><br><span class="line">    vector&lt;DMatch&gt; matches, good_matches;</span><br><span class="line">    vector&lt;KeyPoint&gt; keypoints1, keypoints2;</span><br><span class="line">    <span class="comment">// SURF特征点检测</span></span><br><span class="line">    <span class="type">int</span> minHessian = <span class="number">275</span>;</span><br><span class="line">    <span class="comment">//创建一个surf类检测器对象并初始化</span></span><br><span class="line">    Ptr&lt;SURF&gt; detector = SURF::<span class="built_in">create</span>(minHessian, <span class="number">4</span>, <span class="number">3</span>, <span class="literal">true</span>, <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">if</span> (src1.<span class="built_in">empty</span>() || src2.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;ERROR!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">namedWindow</span>(<span class="string">&quot;Input_Image&quot;</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">namedWindow</span>(<span class="string">&quot;BFMatch_Image&quot;</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">imshow</span>(<span class="string">&quot;Input_Image&quot;</span>, src1);</span><br><span class="line">    <span class="comment">//找到特征点并计算特征描述子(向量)</span></span><br><span class="line">    detector-&gt;<span class="built_in">detectAndCompute</span>(src1, <span class="built_in">Mat</span>(), keypoints1, src1_vector);</span><br><span class="line">    detector-&gt;<span class="built_in">detectAndCompute</span>(src2, <span class="built_in">Mat</span>(), keypoints2, src2_vector);</span><br><span class="line">    <span class="comment">//匹配，数据来源是特征向量，结果存在DMatch里面</span></span><br><span class="line">    matcher.<span class="built_in">match</span>(src1_vector, src2_vector, matches);</span><br><span class="line">    <span class="built_in">sort</span>(matches.<span class="built_in">begin</span>(), matches.<span class="built_in">end</span>());</span><br><span class="line">    <span class="comment">//匹配点数量不大于50</span></span><br><span class="line">    <span class="type">int</span> ptsPairs = std::<span class="built_in">min</span>(<span class="number">30</span>, (<span class="type">int</span>)(matches.<span class="built_in">size</span>() * <span class="number">0.15</span>));</span><br><span class="line">    cout &lt;&lt; ptsPairs &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; ptsPairs; i++)</span><br><span class="line">        good_matches.<span class="built_in">push_back</span>(matches[i]);</span><br><span class="line">    <span class="comment">//绘制匹配点</span></span><br><span class="line">    <span class="built_in">drawMatches</span>(src1, keypoints1, src2, keypoints2, good_matches, MatchesImage, Scalar::<span class="built_in">all</span>(<span class="number">-1</span>), Scalar::<span class="built_in">all</span>(<span class="number">-1</span>), <span class="built_in">vector</span>&lt;<span class="type">char</span>&gt;(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);  </span><br><span class="line">    <span class="built_in">imshow</span>(<span class="string">&quot;BFMatch_Image&quot;</span>, MatchesImage);</span><br><span class="line">    <span class="built_in">waitKey</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5、结果"><a href="#5、结果" class="headerlink" title="5、结果"></a>5、结果</h4><p>①、原图<br><img src="https://img-blog.csdnimg.cn/6a4c6501fc17494eb9c63ed654743652.png" alt="原图"></p>
+<p>②、对比<br><img src="https://img-blog.csdnimg.cn/d891ff1f5eb14d8bba0dbe94e8b1a551.png" alt="对比"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/29/opencv%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="cl7en1hji00007ost24cn311j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/" rel="tag">opencv</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/30/%E5%85%B3%E4%BA%8E/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          相关
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/about-blog/" rel="tag">about_blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/" rel="tag">opencv</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/about-blog/" style="font-size: 10px;">about_blog</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/30/%E5%85%B3%E4%BA%8E/">相关</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/29/opencv%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">opencv环境搭建</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
